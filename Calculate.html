@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Sederhana</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .calc-container {
+      background: white;
+      padding: 20px;
+      display: inline-block;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    input[type="number"] {
+      width: 100px;
+      padding: 10px;
+      margin: 10px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calc-container">
+    <h2>Kalkulator Sederhana</h2>
+    <input type="number" id="num1" placeholder="Angka 1">
+    <input type="number" id="num2" placeholder="Angka 2">
+    <br>
+    <button onclick="hitung('+')">+</button>
+    <button onclick="hitung('-')">-</button>
+    <button onclick="hitung('*')">×</button>
+    <button onclick="hitung('/')">÷</button>
+    <div id="result">Hasil: </div>
+  </div>
+
+  <script>
+    function hitung(operator) {
+      var a = parseFloat(document.getElementById('num1').value);
+      var b = parseFloat(document.getElementById('num2').value);
+      var hasil;
+
+      if (isNaN(a) || isNaN(b)) {
+        hasil = "Masukkan angka yang valid.";
+      } else {
+        switch(operator) {
+          case '+': hasil = a + b; break;
+          case '-': hasil = a - b; break;
+          case '*': hasil = a * b; break;
+          case '/': hasil = b !== 0 ? a / b : "Tidak bisa dibagi 0"; break;
+        }
+      }
+
+      document.getElementById('result').innerText = "Hasil: " + hasil;
+    }
+  </script>
+</body>
+</html>
